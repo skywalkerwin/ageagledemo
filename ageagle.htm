@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<html>
+
+<head>
+	<title> My First HTML</title>
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+	<script src='http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=994e83c3f27d62c4d9326872d8a50839'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+	<meta harset='UTF-8' name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body { background-color:rgb(119, 209, 224); margin:0; padding:0; }
+	</style>
+</head>
+
+<body>
+
+		<div onmousedown="mDown(this)" onmouseup="mUp(this)"
+		style="background-color:#D94A38;width:90px;height:20px;padding:40px;">
+		Click Me</div>
+		
+		<script>
+		function mDown(obj) {
+		  obj.style.backgroundColor = "#1ec5e5";
+		  obj.innerHTML = "Release Me";
+		}
+		
+		function mUp(obj) {
+		  obj.style.backgroundColor="#D94A38";
+		  obj.innerHTML="Thank You";
+		}
+		</script>
+
+
+<h1 onmousedown="mclick(this)" style="font-size:20px;font-family:verdana;text-align:center"> Ageagle - Map and Weather Demo</h1>
+<script>
+function mclick(obj){
+//var weatherCall = "api.openweathermap.org/data/2.5/weather?lat="+clat+"&lon="+clon&"APPID=994e83c3f27d62c4d9326872d8a50839";
+//var weather = json.parse(JSON.stringify(weatherCall));
+obj.style.color=rgb(255,0,0);
+</script>
+
+<pre id='info'></pre>
+<div  id="map" tabindex="0" label="Map" style="position: absolute; width: 100vw; height: 50vh;"></div>
+
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYW94a3JpZ2FuIiwiYSI6ImNqdWJtZmxldTBmNDUzeXBiaGZhbnIzcG4ifQ.1QHixzzDq0uRwzqvxUNrvw';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/outdoors-v11'
+});
+
+map.on('mousemove', function (e) {
+var coords = JSON.parse(JSON.stringify(e.lngLat));
+var lat = coords.lat;
+var lng = coords.lng;
+
+document.getElementById('info').innerHTML =
+// e.point is the x, y coordinates of the mousemove event relative
+// to the top-left corner of the map
+JSON.stringify(e.point) + '<br />' +
+// e.lngLat is the longitude, latitude geographical position of the event
+JSON.stringify(e.lngLat)+'<br />'+ lng +", "+lat;
+
+
+});
+
+</script>
+
+
+</html>
