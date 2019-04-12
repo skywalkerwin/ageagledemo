@@ -34,10 +34,8 @@
 			var coords = JSON.parse(JSON.stringify(e.lngLat));
 			var lat=coords.lat.toString().substring(0,5);
 			var lon=coords.lng.toString().substring(0,5);
-			// var key = "994e83c3f27d62c4d9326872d8a50839";
-			// var key = "fc767968e5613a670aebd679e70115b2";
-			// var key = "ac085af24fbf908d878aacfec0a41de7";
-			var weatherURL = "https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=imperial&APPID=ac085af24fbf908d878aacfec0a41de7";
+			var key = "ac085af24fbf908d878aacfec0a41de7";
+			var weatherURL = "https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=imperial&APPID="+key;
 			var weatherParsed = JSON.parse(JSON.stringify(weatherURL));
 			console.log(weatherURL);
 			fetch(weatherURL)
