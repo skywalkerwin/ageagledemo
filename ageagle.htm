@@ -24,9 +24,8 @@ obj.style.color=rgb(255,0,0);
 </script>
 
 <pre id='coordinates'></pre>
-<pre id='weatherinfo'></pre>
+<pre id='weatherinfo'> Temp: </pre>
 <div  id="map" tabindex="0" ariel-label="Map" style="position: absolute; width: 100vw; height: 50vh;"></div>
-
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW94a3JpZ2FuIiwiYSI6ImNqdWJtZmxldTBmNDUzeXBiaGZhbnIzcG4ifQ.1QHixzzDq0uRwzqvxUNrvw';
@@ -35,10 +34,10 @@ container: 'map',
 style: 'mapbox://styles/mapbox/outdoors-v11'
 });
 
-map.on('mousemove', function (e) {
+map.on('click', function (e) {
 
 
-document.getElementById('coordinates').innerHTML =
+// document.getElementById('coordinates').innerHTML =
 // e.point is the x, y coordinates of the mousemove event relative
 // to the top-left corner of the map
 JSON.stringify(e.point) + '<br />' +
@@ -62,9 +61,11 @@ function showWeather(){
 	var coords = JSON.parse(JSON.stringify(e.lngLat));
 	lat = coords.lat;
 	lng = coords.lng;
-	var weatherURL = "https://api.openweathermap.org/data/2.5/weather?lat="+lat.toString()+"&lon="+lng.toString()+"&APPID=994e83c3f27d62c4d9326872d8a50839";
+	// var key =	"994e83c3f27d62c4d9326872d8a50839";
+	// var key = "fc767968e5613a670aebd679e70115b2";
+	var key = "ac085af24fbf908d878aacfec0a41de7";
+	var weatherURL = "https://api.openweathermap.org/data/2.5/weather?lat="+lat.toString()+"&lon="+lng.toString()+"&APPID=ac085af24fbf908d878aacfec0a41de7";
 	var weatherParsed = JSON.parse(JSON.stringify(weatherURL));
-	//document.getElementById('weatherinfo').innerHTML = weatherCall;
 	console.log(weatherURL);
 	fetch(weatherURL)
 	.then(response => {
@@ -73,8 +74,7 @@ function showWeather(){
   .then(data => {
     // Work with JSON data here
 		console.log(data)
-	console.log(data.main)
-	document.getElementById('weatherinfo').innerHTML = weatherCall+'<br />'+data;
+	document.getElementById('weatherinfo').innerHTML = " Temp: "+data.main.temp;
 
   })
   .catch(err => {
