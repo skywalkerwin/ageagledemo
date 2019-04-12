@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<title> My First HTML</title>
+	<title> AgEagle</title>
 	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
 	<meta harset='UTF-8' name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +64,7 @@ function showWeather(){
 	// var key =	"994e83c3f27d62c4d9326872d8a50839";
 	// var key = "fc767968e5613a670aebd679e70115b2";
 	var key = "ac085af24fbf908d878aacfec0a41de7";
-	var weatherURL = "https://api.openweathermap.org/data/2.5/weather?lat="+lat.toString()+"&lon="+lng.toString()+"&APPID=ac085af24fbf908d878aacfec0a41de7";
+	var weatherURL = "https://api.openweathermap.org/data/2.5/weather?lat="+lat.toString()+"&lon="+lng.toString()+"&units=imperial&APPID=ac085af24fbf908d878aacfec0a41de7";
 	var weatherParsed = JSON.parse(JSON.stringify(weatherURL));
 	console.log(weatherURL);
 	fetch(weatherURL)
