@@ -32,8 +32,8 @@
 		document.getElementById("map").addEventListener("click",showWeather);
 		function showWeather(){
 			var coords = JSON.parse(JSON.stringify(e.lngLat));
-			var lat=coords.lat.toString().substring(0,5);
-			var lon=coords.lng.toString().substring(0,5);
+			var lat=coords.lat.toString();
+			var lon=coords.lng.toString();
 			var key = "ac085af24fbf908d878aacfec0a41de7";
 			var weatherURL = "https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=imperial&APPID="+key;
 			var weatherParsed = JSON.parse(JSON.stringify(weatherURL));
