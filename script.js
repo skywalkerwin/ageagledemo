@@ -24,11 +24,14 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYW94a3JpZ2FuIiwiYSI6ImNqdWJtZmxldTBmNDUzeXBia
 					var name="";
 					if(data.name==name) {name = "N/A";}
 					else {name = data.name;}
-					var place = " "+name+'     Lon: '+lon+'    Lat: '+lat+'<br />'+'<br />';
-					var main = " Current Temp: "+data.main.temp+"F"+"    Minimum Temp: "+data.main.temp_min+"F"+"    Maximum Temp: "+data.main.temp_max+"F"+"    Humidity:"+data.main.humidity+"%"+"    Pressure:"+data.main.pressure+" hPa"+'<br />'+'<br />';
-					var wind = " Windspeed: "+data.wind.speed+' mph'+'     deg: '+data.wind.deg+'<br />'+'<br />';
-					var weather = " "+data.weather[0].main+'     '+data.weather[0].description+'<br />';
-					document.getElementById('weatherinfo').innerHTML = place + main + wind + weather;
+					var place = " "+name+'     Lon: '+lon+'    Lat: '+lat;
+					var temps = " Current Temp: "+data.main.temp+"F"+"    Minimum Temp: "+data.main.temp_min+"F"+"    Maximum Temp: "+data.main.temp_max+"F"+"    Humidity:"+data.main.humidity+"%"+"    Pressure:"+data.main.pressure+" hPa";
+					var wind = " Windspeed: "+data.wind.speed+' mph'+'     deg: '+data.wind.deg;
+					var weather = " "+data.weather[0].main+'     '+data.weather[0].description;
+                    document.getElementById('place').innerHTML = place;
+                    document.getElementById('temps').innerHTML = temps;
+                    document.getElementById('wind').innerHTML = wind;
+                    document.getElementById('weather').innerHTML = weather;
 				})
 				.catch(err => {
 					//error handling...perhaps if my api limits started acting up here...
