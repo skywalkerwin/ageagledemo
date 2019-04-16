@@ -6,60 +6,20 @@
 	<title>Luke Nguyen - AgEagle Demo</title>
 	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta harset='UTF-8' name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		body { background-color:rgb(68, 204, 113); margin:0; padding:0; }
-	</style>
 </head>
 
 <body>
 
-<h1 style="font-size:20px;font-family:verdana;text-align:center"> Ageagle - Map and Weather Demo</h1>
+<h1 id='titleheader'> Ageagle - Map and Weather Demo</h1>
 
 <pre id='weatherinfo'> Location...<br/> <br/> Temperatures... <br/> <br/> Wind... <br/> <br/> Weather... </pre>
 
-<div  id="map" tabindex="0" ariel-label="Map" style="text-align: left; vertical-align: bottom; position: absolute; width: 100vw; height: 70vh;"> Click anywhere on the map to see weather details! </div>
+<div  id="map" tabindex="0" ariel-label="Map"> Click anywhere on the map to see weather details! </div>
 
-<script>
+<script src="script.js"> </script>
 
-	mapboxgl.accessToken = 'pk.eyJ1IjoiYW94a3JpZ2FuIiwiYSI6ImNqdWJtZmxldTBmNDUzeXBiaGZhbnIzcG4ifQ.1QHixzzDq0uRwzqvxUNrvw';
-	var map = new mapboxgl.Map({
-		container: 'map',
-		style: 'mapbox://styles/mapbox/outdoors-v11'
-	});
-
-	map.on('click', function (e) {
-		document.getElementById("map").addEventListener("click",showWeather);
-		function showWeather(){
-			var coords = JSON.parse(JSON.stringify(e.lngLat));
-			var lat=coords.lat.toString();
-			var lon=coords.lng.toString();
-			var key = "ac085af24fbf908d878aacfec0a41de7";
-			var weatherURL = "https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=imperial&APPID="+key;
-			var weatherParsed = JSON.parse(JSON.stringify(weatherURL));
-			console.log(weatherURL);
-			fetch(weatherURL)
-				.then(response => {
-					return response.json()
-				})
-				.then(data => {
-					console.log(data)
-					console.log(data.weather)
-					var name="";
-					if(data.name==name) {name = "N/A";}
-					else {name = data.name;}
-					var place = " "+name+'     Lon: '+lon+'    Lat: '+lat+'<br />'+'<br />';
-					var main = " Current Temp: "+data.main.temp+"F"+"    Minimum Temp: "+data.main.temp_min+"F"+"    Maximum Temp: "+data.main.temp_max+"F"+"    Humidity:"+data.main.humidity+"%"+"    Pressure:"+data.main.pressure+" hPa"+'<br />'+'<br />';
-					var wind = " Windspeed: "+data.wind.speed+' mph'+'     deg: '+data.wind.deg+'<br />'+'<br />';
-					var weather = " "+data.weather[0].main+'     '+data.weather[0].description+'<br />';
-					document.getElementById('weatherinfo').innerHTML = place + main + wind + weather;
-				})
-				.catch(err => {
-					//error handling...perhaps if my api limits started acting up here...
-				})
-			}
-	});
-
-</script>
+</body>
 
 </html>

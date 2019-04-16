@@ -1,0 +1,22 @@
+body { 
+    background-color:rgb(178, 235, 197); 
+    margin:0; 
+    padding:0; 
+}
+#titleheader{
+    font-size: 20px;
+    font-family: verdana;
+    text-align: center;
+}
+#weatherinfo{
+    /*background-color: red;*/
+}
+
+#map{
+    text-align: left; 
+    vertical-align: bottom; 
+    position: absolute; 
+    width: 100vw; 
+    height: 70vh;
+}
+
